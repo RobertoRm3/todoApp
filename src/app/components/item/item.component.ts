@@ -3,11 +3,17 @@ import { TodoInterfaces } from '../../interfaces/todo-interfaces';
 
 @Component({
   selector: 'item',
-  templateUrl: './item.component.html',
+  template: './item.component.html',
+  get templateUrl() {
+    return this._templateUrl;
+  },
+  set templateUrl(value) {
+    this._templateUrl = value;
+  },
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  @Input() todo: TodoInterfaces;
+  @Input() todo: TodoInterfaces[];
   @Output() checkedItem = new EventEmitter();
   @Output() doubleClickedItem = new EventEmitter();
   // @Output() blurredItem = new EventEmitter();
